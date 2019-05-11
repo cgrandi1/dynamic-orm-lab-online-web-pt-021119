@@ -55,8 +55,8 @@ class InteractiveRecord
     DB[:conn].execute(sql)
   end
 
-  def self.find_by(name, grade)
-    sql = "SELECT * FROM #{self.table_name} WHERE name = '#{name}', grade = '#{grade}' LIMIT 1"
+  def self.find_by(hash)
+    sql = "SELECT * FROM #{self.table_name} WHERE hash.keys[0] = '#{hash.keys[0]}' "
     DB[:conn].execute(sql)
   end
 
