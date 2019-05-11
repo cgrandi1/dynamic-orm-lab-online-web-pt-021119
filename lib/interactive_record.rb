@@ -33,7 +33,6 @@ class InteractiveRecord
 
   def col_names_for_insert
     self.class.column_names.delete_if {|col| col == "id"}.join(", ")
-    binding.pry
   end
 
   def values_for_insert
@@ -51,7 +50,7 @@ class InteractiveRecord
     end
 
   def self.find_by_name(name)
-    sql = "SELECT * FROM #{self.table_name} WHERE name = '#{name}'"
+    sql = "SELECT * FROM #{self.table_name} WHERE name = '#{name}' LIMIT 1"
     DB[:conn].execute(sql)
   end
 
